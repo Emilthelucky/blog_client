@@ -1,0 +1,133 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    color: black;
+    width: 100vw;
+    margin: 0 auto;
+    padding: 30px 100px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 20px;
+    letter-spacing: -0.8px;
+    transition: all 0.3s ease;
+    position: relative;
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.creator {
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.creator-p {
+    display: flex;
+    width: 200px;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+}
+
+.code-by,
+.name {
+    transition: transform 0.8s ease-in-out, width 0.5s ease-in-out;
+    white-space: nowrap;
+}
+
+.code-by {
+    transition-delay: 0.2s;
+}
+
+.name {
+    margin-left: 12px;
+    transition-delay: 0.2s;
+}
+
+.navbar:hover .code-by {
+    transform: translateX(-100px);
+}
+
+.navbar:hover .name {
+    transform: translateX(-105px);
+}
+
+.creator-p:hover {
+    width: 170px;
+}
+
+.tabs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    font-weight: 500;
+}
+
+.logout{
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.tab {
+    border: none;
+    padding: 0;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    background: transparent;
+}
+
+.toggle-btn {
+    display: none;
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.tabs-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: black;
+    overflow: hidden;
+    transition: height 0.5s ease, padding 0.5s ease;
+}
+
+.tabs-dropdown.show {
+    height: 300px;
+    padding: 50px;
+}
+
+.tab-drop {
+    padding: 0;
+    border: none;
+    font-size: 16px;
+    background: transparent;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.toggle-btn-white {
+    fill: white;
+}
+
+@media (max-width: 750px) {
+    .toggle-btn {
+        display: block;
+    }
+
+    .tabs {
+        display: none;
+    }
+}

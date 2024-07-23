@@ -1,0 +1,94 @@
+/* General container styles */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Form styles */
+.login-form {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button styles */
+.login-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+/* Message styles */
+.success-message,
+.error-message {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.success-message {
+    background-color: #28a745;
+    font-family: "Poppins";
+}
+
+.error-message {
+    background-color: #dc3545;
+    font-family: "Poppins";
+}
+
+.qeyd{
+    font-family: "Poppins";
+    font-size: 14px;
+}
