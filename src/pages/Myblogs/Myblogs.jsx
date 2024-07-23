@@ -5,12 +5,13 @@ import './Myblogs.css'
 import { APIUrl } from '../../App'
 import { UserContext } from '../../context/UserContext'
 import { BlogContext } from '../../context/BlogContext'
+import { Spinner } from '@chakra-ui/react'
 
 const MyBlog = () => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
-    const { user } = useContext(UserContext)
+    const { user, isLoading } = useContext(UserContext)
 
     const { blog, setBlog, blogs, setBlogs } = useContext(BlogContext)
 
@@ -55,7 +56,6 @@ const MyBlog = () => {
         navigate('/add-blog')
     }
 
-    if (loading) return <p>Loading...</p>
     if (error)
         return (
             <div className="myblog-container">
@@ -65,6 +65,22 @@ const MyBlog = () => {
                 </button>
             </div>
         )
+
+    if (loading) {
+        return (
+            <div className="spinner-container">
+                {
+                    <Spinner
+                        thickness="4px"
+                        speed="0.65s"
+                        emptyColor="gray.200"
+                        color="blue.500"
+                        size="xl"
+                    />
+                }
+            </div>
+        )
+    }
 
     return (
         <div className="myblog-container">

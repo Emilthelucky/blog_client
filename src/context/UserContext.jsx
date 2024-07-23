@@ -9,10 +9,23 @@ export const UserContextProvider = ({ children }) => {
         return savedUser ? JSON.parse(savedUser) : null
     })
 
+    const [isLoading, setIsLoading] = useState(false)
+    console.log(isLoading)
+
+    const showLoading = () => {
+        setIsLoading(true)
+    }
+
+    const hideLoading = () => {
+        setIsLoading(false)
+    }
+
     console.log(user)
 
     return (
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider
+            value={{ user, setUser, isLoading, showLoading, hideLoading }}
+        >
             {children}
         </UserContext.Provider>
     )

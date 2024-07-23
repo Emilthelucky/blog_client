@@ -20,3 +20,11 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+.spinner-container{
+    width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 240px;
+    width: 50px;
+}

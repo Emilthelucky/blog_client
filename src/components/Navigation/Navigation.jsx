@@ -1,23 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './Navigation.css'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../../context/UserContext'
-import { useContext } from 'react'
 import { BlogContext } from '../../context/BlogContext'
+import DelayedLink from '../../link/DelayedLink'
+import { Spinner } from '@chakra-ui/react'
 
 export const Navigation = () => {
     const [showTabs, setShowTabs] = useState(false)
     const { user, setUser } = useContext(UserContext)
-
-    const { blog, blogs, setBlog, setBlogs } = useContext(BlogContext)
+    const { setBlog, setBlogs } = useContext(BlogContext)
 
     const Logout = () => {
-        localStorage.removeItem('user')
-        setUser(null)
-        localStorage.removeItem('blogs')
-        setBlogs(null)
-        localStorage.removeItem('blog')
-        setBlog(null)
+        setTimeout(() => {
+            localStorage.removeItem('user')
+            setUser(null)
+            localStorage.removeItem('blogs')
+            setBlogs(null)
+            localStorage.removeItem('blog')
+            setBlog(null)
+        }, 2000)
+    }
+
+    const handleTabClick = () => {
+        setShowTabs(false)
     }
 
     return (
@@ -33,14 +39,22 @@ export const Navigation = () => {
             <div className="tabs">
                 {!user ? (
                     <>
-                        <Link to="/" className="tab">
-                            Home
-                        </Link>
-                        <Link to="/login" className="tab">
+                        <DelayedLink
+                            routingTo="/login"
+                            dynamicClassName="tab"
+                            delay={2000}
+                        >
                             Login
-                        </Link>
-                        <Link to="/register" className="tab">
+                        </DelayedLink>
+                        <DelayedLink
+                            routingTo="/register"
+                            dynamicClassName="tab"
+                            delay={2000}
+                        >
                             Register
+                        </DelayedLink>
+                        <Link to="/qeyd" className="tab">
+                            Qeydlər
                         </Link>
                     </>
                 ) : (
@@ -51,7 +65,10 @@ export const Navigation = () => {
                         <Link to="/myblogs" className="tab">
                             My Blogs
                         </Link>
-                        <button onClick={() => Logout()} className="tab logout">
+                        <Link to="/qeyd" className="tab">
+                            Qeydlər
+                        </Link>
+                        <button onClick={Logout} className="tab logout">
                             Logout
                         </button>
                     </>
@@ -71,9 +88,64 @@ export const Navigation = () => {
                 </svg>
             </button>
             <div className={`tabs-dropdown ${showTabs ? 'show' : ''}`}>
-                <button className="tab-drop">Home</button>
-                <button className="tab-drop">Contact</button>
-                <button className="tab-drop">About</button>
+                {!user ? (
+                    <>
+                        <Link
+                            to="/login"
+                            className="tab-drop"
+                            onClick={handleTabClick}
+                        >
+                            Login
+                        </Link>
+                        <Link
+                            to="/register"
+                            className="tab-drop"
+                            onClick={handleTabClick}
+                        >
+                            Register
+                        </Link>
+                        <Link
+                            to="/qeyd"
+                            className="tab-drop"
+                            onClick={handleTabClick}
+                        >
+                            Qeydlər
+                        </Link>
+                    </>
+                ) : (
+                    <>
+                        <Link
+                            to="/"
+                            className="tab-drop"
+                            onClick={handleTabClick}
+                        >
+                            Home
+                        </Link>
+                        <Link
+                            to="/myblogs"
+                            className="tab-drop"
+                            onClick={handleTabClick}
+                        >
+                            My Blogs
+                        </Link>
+                        <Link
+                            to="/qeyd"
+                            className="tab-drop"
+                            onClick={handleTabClick}
+                        >
+                            Qeydlər
+                        </Link>
+                        <button
+                            onClick={() => {
+                                Logout()
+                                handleTabClick()
+                            }}
+                            className="tab-drop logout"
+                        >
+                            Logout
+                        </button>
+                    </>
+                )}
             </div>
         </nav>
     )

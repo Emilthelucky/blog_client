@@ -3,25 +3,36 @@ import axios from 'axios'
 import './Home.css'
 import { APIUrl } from '../../App'
 import { Title } from '../../components/Title/Title'
+import { UserContext } from '../../context/UserContext'
+import { useContext } from 'react'
+import { Spinner } from '@chakra-ui/react'
 
 export const Home = () => {
     const [blogs, setBlogs] = useState([])
     const [selectedCategory, setSelectedCategory] = useState('Hamisi')
     const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(false)
+
+    const { isLoading } = useContext(UserContext)
 
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
+                setLoading(false)
                 setBlogs([])
                 let response
                 if (selectedCategory === 'Hamisi') {
+                    setLoading(true)
                     response = await axios.get(`${APIUrl}/blogs/all`)
+                    setLoading(false)
                 } else {
                     console.log(selectedCategory)
+                    setLoading(true)
                     response = await axios.post(
                         `${APIUrl}/blogs/all/category`,
                         { category: selectedCategory }
                     )
+                    setLoading(false)
                 }
                 setBlogs(response.data.data)
                 setError(null)
@@ -36,6 +47,22 @@ export const Home = () => {
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category)
+    }
+
+    if (loading) {
+        return (
+            <div className="spinner-container">
+                {
+                    <Spinner
+                        thickness="4px"
+                        speed="0.65s"
+                        emptyColor="gray.200"
+                        color="blue.500"
+                        size="xl"
+                    />
+                }
+            </div>
+        )
     }
 
     return (

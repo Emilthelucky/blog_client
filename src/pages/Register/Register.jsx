@@ -3,6 +3,9 @@ import './Register.css'
 import { APIUrl } from '../../App'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../../context/UserContext'
+import { useContext } from 'react'
+import { Spinner } from '@chakra-ui/react'
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -21,6 +24,24 @@ const Register = () => {
             ...formData,
             [name]: value,
         })
+    }
+
+    const { isLoading } = useContext(UserContext)
+
+    if (isLoading) {
+        return (
+            <div className="spinner-container">
+                {
+                    <Spinner
+                        thickness="4px"
+                        speed="0.65s"
+                        emptyColor="gray.200"
+                        color="blue.500"
+                        size="xl"
+                    />
+                }
+            </div>
+        )
     }
 
     const handleSubmit = async (e) => {

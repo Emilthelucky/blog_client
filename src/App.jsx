@@ -9,6 +9,7 @@ import Addblog from './pages/Addblog/Addblog.jsx'
 import { useContext } from 'react'
 import { UserContext } from './context/UserContext.jsx'
 import { Home } from './pages/home/Home.jsx'
+import { Qeyd } from './pages/Qeyd/Qeyd.jsx'
 
 export const APIUrl = import.meta.env.VITE_API_URL
 
@@ -37,6 +38,7 @@ export const App = () => {
                 />
                 <Route path="/login" element={!user ? <Login /> : <Home />} />
                 <Route path="/" element={user ? <Home /> : <Login />} />
+                <Route path="/qeyd" element={<Qeyd />} />
             </Routes>
         </div>
     )

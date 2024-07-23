@@ -4,13 +4,15 @@ import { useNavigate } from 'react-router-dom'
 import './Updateblog.css'
 import { APIUrl } from '../../App'
 import { BlogContext } from '../../context/BlogContext'
+import { UserContext } from '../../context/UserContext'
+import { Spinner } from '@chakra-ui/react'
 
 const UpdateBlog = () => {
     const navigate = useNavigate()
     const [title, setTitle] = useState('')
     const [image, setImage] = useState('')
     const [text, setText] = useState('')
-    const [category, setCategory] = useState('Telefon') // Default category
+    const [category, setCategory] = useState('Telefon')
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
@@ -55,8 +57,22 @@ const UpdateBlog = () => {
         }
     }
 
-    if (loading) return <p>Loading...</p>
     if (error) return <p className="error-message">{error}</p>
+    if (loading) {
+        return (
+            <div className="spinner-container">
+                {
+                    <Spinner
+                        thickness="4px"
+                        speed="0.65s"
+                        emptyColor="gray.200"
+                        color="blue.500"
+                        size="xl"
+                    />
+                }
+            </div>
+        )
+    }
 
     return (
         <div className="updateblog-container">

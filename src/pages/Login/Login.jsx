@@ -5,9 +5,27 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../context/UserContext'
 import { useContext } from 'react'
+import { Spinner } from '@chakra-ui/react'
 
 const Login = () => {
-    const { user, setUser } = useContext(UserContext)
+    const { user, setUser, isLoading } = useContext(UserContext)
+
+    if (isLoading) {
+        return (
+            <div className="spinner-container">
+                {
+                    <Spinner
+                        thickness="4px"
+                        speed="0.65s"
+                        emptyColor="gray.200"
+                        color="blue.500"
+                        size="xl"
+                    />
+                }
+            </div>
+        )
+    }
+
     const [formData, setFormData] = useState({
         username: '',
         password: '',

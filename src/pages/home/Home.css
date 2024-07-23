@@ -120,6 +120,7 @@
     color: #555;
     flex-direction: column;
     gap: 10px;
+    margin: 10px;
 }
 
 .author {
