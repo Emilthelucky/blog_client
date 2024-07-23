@@ -42,16 +42,11 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: "Poppins";
 }
 
 .add-button:hover {
     background-color: #0056b3;
-}
-
-.error-message {
-    color: white;
-    margin-top: 10px;
-    width: 100%;
 }
 
 .addblog-container h2{

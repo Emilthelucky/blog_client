@@ -106,7 +106,7 @@ const Register = () => {
                     />
                 </div>
                 <button type="submit" className="register-button">
-                    Register
+                    {loading ? <Spinner /> : 'Register'}
                 </button>
             </form>
             {success && <div className="success-message">{success}</div>}

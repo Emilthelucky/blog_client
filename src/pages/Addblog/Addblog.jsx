@@ -4,13 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import './Addblog.css'
 import { APIUrl } from '../../App'
 import { UserContext } from '../../context/UserContext'
+import { Spinner } from '@chakra-ui/react'
 
 const Addblog = () => {
     const { user } = useContext(UserContext)
     const [title, setTitle] = useState('')
     const [image, setImage] = useState('')
     const [text, setText] = useState('')
-    const [category, setCategory] = useState('Telefon') // Default category
+    const [category, setCategory] = useState('Telefon')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
     const navigate = useNavigate()
@@ -24,7 +25,7 @@ const Addblog = () => {
             console.log(res)
             navigate('/myblogs')
         } catch (err) {
-            setError('Failed to add blog.')
+            setError(err.response.data.message)
         } finally {
             setLoading(false)
         }
@@ -73,9 +74,9 @@ const Addblog = () => {
                     </select>
                 </div>
                 <button type="submit" className="add-button">
-                    Add Blog
+                    {loading ? <Spinner /> : 'Blog əlavə et'}
                 </button>
-                {loading && <p>Loading...</p>}
+
                 {error && <p className="error-message">{error}</p>}
             </form>
         </div>

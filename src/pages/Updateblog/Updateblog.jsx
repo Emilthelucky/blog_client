@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import './Updateblog.css'
 import { APIUrl } from '../../App'
 import { BlogContext } from '../../context/BlogContext'
-import { UserContext } from '../../context/UserContext'
 import { Spinner } from '@chakra-ui/react'
 
 const UpdateBlog = () => {
@@ -34,9 +33,9 @@ const UpdateBlog = () => {
                 setTitle(blogData.title || '')
                 setImage(blogData.image ? blogData.image.url : '')
                 setText(blogData.text ? blogData.text.text : '')
-                setCategory(blogData.category || 'Telefon') // Set category from blog data
+                setCategory(blogData.category || 'Telefon')
             } catch (err) {
-                setError('Failed to fetch blog.')
+                setError('Blogu cekdikde problem bas verdi')
             } finally {
                 setLoading(false)
             }
@@ -53,7 +52,7 @@ const UpdateBlog = () => {
             localStorage.removeItem('blog')
             navigate('/myblogs')
         } catch (err) {
-            setError('Failed to update blog.')
+            setError('Blog guncellenmedi')
         }
     }
 

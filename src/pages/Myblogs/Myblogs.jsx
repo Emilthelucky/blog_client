@@ -6,6 +6,7 @@ import { APIUrl } from '../../App'
 import { UserContext } from '../../context/UserContext'
 import { BlogContext } from '../../context/BlogContext'
 import { Spinner } from '@chakra-ui/react'
+import { Title } from '../../components/Title/Title'
 
 const MyBlog = () => {
     const [loading, setLoading] = useState(true)
@@ -84,7 +85,7 @@ const MyBlog = () => {
 
     return (
         <div className="myblog-container">
-            <h2>My Blogs</h2>
+            <h2>Bloglarım</h2>
             <button onClick={handleAddBlog} className="add-button-myblog">
                 Blog elave et
             </button>

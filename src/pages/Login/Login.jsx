@@ -99,7 +99,7 @@ const Login = () => {
                     className="login-button"
                     disabled={loading}
                 >
-                    {loading ? 'Logging in...' : 'Login'}
+                    {loading ? <Spinner /> : 'Login'}
                 </button>
             </form>
             {success && <div className="success-message">{success}</div>}

@@ -67,7 +67,7 @@ export const Home = () => {
 
     return (
         <div className="home-area">
-            <Title title="Butun blog yazilar burada" />
+            <Title title="Tech Blog" />
             <div className="categoryies">
                 {['Hamisi', 'Telefon', 'Laptop', 'Planset'].map((category) => (
                     <button

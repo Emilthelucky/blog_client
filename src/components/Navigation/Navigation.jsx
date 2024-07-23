@@ -60,10 +60,10 @@ export const Navigation = () => {
                 ) : (
                     <>
                         <Link to="/" className="tab">
-                            Home
+                            Ev
                         </Link>
                         <Link to="/myblogs" className="tab">
-                            My Blogs
+                            Bloglarım
                         </Link>
                         <Link to="/qeyd" className="tab">
                             Qeydlər
@@ -119,14 +119,14 @@ export const Navigation = () => {
                             className="tab-drop"
                             onClick={handleTabClick}
                         >
-                            Home
+                            Ev
                         </Link>
                         <Link
                             to="/myblogs"
                             className="tab-drop"
                             onClick={handleTabClick}
                         >
-                            My Blogs
+                            Bloglarım
                         </Link>
                         <Link
                             to="/qeyd"
