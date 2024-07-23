@@ -6,10 +6,11 @@ import Login from './pages/Login/Login.jsx'
 import MyBlog from './pages/Myblogs/Myblogs.jsx'
 import UpdateBlog from './pages/Updateblog/Updateblog.jsx'
 import Addblog from './pages/Addblog/Addblog.jsx'
-export const APIUrl = 'http://localhost:5000'
 import { useContext } from 'react'
 import { UserContext } from './context/UserContext.jsx'
 import { Home } from './pages/home/Home.jsx'
+
+export const APIUrl = import.meta.env.VITE_API_URL
 
 export const App = () => {
     const { user } = useContext(UserContext)
